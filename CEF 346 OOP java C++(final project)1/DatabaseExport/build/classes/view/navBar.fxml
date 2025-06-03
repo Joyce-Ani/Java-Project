@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<HBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="controllers.NavBarController"
+      spacing="20" alignment="CENTER"
+      style="-fx-background-color: #34495e; -fx-padding: 15 20;">
+    
+    <!-- Left: Branding / Home Label -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label fx:id="homeLabel" text="ETS" 
+               style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+    </HBox>
+    
+    <Region HBox.hgrow="ALWAYS"/>
+    
+    <!-- Center: Navigation MenuBar -->
+    <MenuBar fx:id="navMenuBar" style="-fx-background-color: transparent;">
+        <menus>
+            <!-- Orders Menu -->
+            <Menu text="Orders" fx:id="ordersMenu">
+                <items>
+                    <MenuItem text="Create Order" fx:id="menuCreateOrder"/>
+                    <MenuItem text="Update Order" fx:id="menuUpdateOrder"/>
+                </items>
+            </Menu>
+            <!-- Track Shipments Menu -->
+            <Menu text="Track Shipments" fx:id="menuTrackShipmentsMenu"/>
+        </menus>
+    </MenuBar>
+    
+    <!-- Right: Settings Icon -->
+    <ImageView fx:id="settingsIcon" fitHeight="30" fitWidth="30" style="-fx-cursor: hand;">
+        <image>
+            <Image url="@images/settings.png"/>
+        </image>
+    </ImageView>
+    
+</HBox>

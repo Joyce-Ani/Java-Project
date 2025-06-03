@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TitledPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.TrackShipmentsController"
+            style="-fx-background-color: #ecf0f1;">
+
+    <!-- Top: Header -->
+    <top>
+        <HBox style="-fx-background-color: #34495e; -fx-padding: 15;" alignment="CENTER_LEFT">
+            <Label text="Shipment Tracking" style="-fx-text-fill: white; -fx-font-size: 28px;"/>
+        </HBox>
+    </top>
+
+    <!-- Center: Main Content -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;">
+            <!-- Tracking Input Section -->
+            <HBox spacing="10">
+                <TextField fx:id="trackingNumberField" promptText="Enter Tracking Number" HBox.hgrow="ALWAYS"/>
+                <Button text="Track" onAction="#handleTrackShipment"/>
+            </HBox>
+            
+            <Separator />
+
+            <!-- Dynamic Tracking Information -->
+            <Accordion fx:id="trackingAccordion">
+                <panes>
+                    <!-- Shipment Details Pane -->
+                    <TitledPane text="Shipment Details" expanded="true">
+                        <content>
+                            <GridPane hgap="15" vgap="10" style="-fx-padding: 15;">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="40"/>
+                                    <ColumnConstraints percentWidth="60"/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Sender:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label fx:id="senderLabel" text="N/A" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Receiver:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label fx:id="receiverLabel" text="N/A" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Estimated Delivery:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label fx:id="estimatedDeliveryLabel" text="N/A" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Status:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                    <Label fx:id="statusLabel" text="N/A" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                </children>
+                            </GridPane>
+                        </content>
+                    </TitledPane>
+                    
+                    <!-- Timeline Pane -->
+                    <TitledPane text="Timeline">
+                        <content>
+                            <TableView fx:id="timelineTable" prefHeight="200">
+                                <columns>
+                                    <TableColumn text="Time" fx:id="timeColumn" />
+                                    <TableColumn text="Event" fx:id="eventColumn" />
+                                </columns>
+                            </TableView>
+                        </content>
+                    </TitledPane>
+                    
+                    <!-- Map View Pane -->
+                    <TitledPane text="Map View">
+                        <content>
+                            <AnchorPane prefHeight="300">
+                                <ImageView fx:id="mapImageView" preserveRatio="true" fitWidth="400"
+                                           AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" 
+                                           AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0">
+                                    <image>
+                                        <Image url="@images/map_placeholder.png"/>
+                                    </image>
+                                </ImageView>
+                            </AnchorPane>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+        </VBox>
+    </center>
+    
+</BorderPane>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+
+
+
+<!-- IMPORTANT: The root BorderPane now has fx:id="rootPane" -->
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx" 
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.DashboardController"
+            style="-fx-background-color: #ecf0f1;">
+  
+    <!-- Top: Reusable Navigation Bar via fx:include -->
+    <top>
+        <!-- Ensure the fx:include references your nav bar FXML (case-sensitive) -->
+        <fx:include fx:id="navBarInclude" source="navBar.fxml"/>
+    </top>
+
+    <!-- Center: Dashboard Content (unchanged) -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent;">
+            <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 30;">
+                <Label text="Dashboard" 
+                       style="-fx-font-size: 36px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+                
+                <!-- Grid of clickable "cards" -->
+                <GridPane hgap="20" vgap="20" style="-fx-padding: 20;">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                        <ColumnConstraints percentWidth="33.33"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="150"/>
+                        <RowConstraints minHeight="150"/>
+                    </rowConstraints>
+                    
+                    <!-- Card 1: Chat With Admin -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 2, 2);" 
+                          GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <Label text="Chat With Admin" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Label text="Have a query? Chat live with our administrative support." wrapText="true" style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="Open Chat" style="-fx-background-color: #2980b9; -fx-text-fill: white;"/>
+                    </VBox>
+                    
+                    <!-- Card 2: Export Tracking -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 2, 2);" 
+                          GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <Label text="Export Tracking" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Label text="Track your shipments and view real‑time status." wrapText="true" style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="Track Shipment" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+                    </VBox>
+                    
+                    <!-- Card 3: Order Management -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 2, 2);" 
+                          GridPane.columnIndex="2" GridPane.rowIndex="0">
+                        <Label text="Order Management" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Label text="Review, update, and manage all your orders." wrapText="true" style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="Manage Orders" style="-fx-background-color: #c0392b; -fx-text-fill: white;"/>
+                    </VBox>
+                    
+                    <!-- Card 4: Reports & Analytics -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 2, 2);" 
+                          GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <Label text="Reports and Analytics" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Label text="View comprehensive data and performance insights." wrapText="true" style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="View Reports" style="-fx-background-color: #8e44ad; -fx-text-fill: white;"/>
+                    </VBox>
+                    
+                    <!-- Card 5: Customer Support -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 2, 2);" 
+                          GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label text="Customer Support" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Label text="Reach out to support for any issues or queries." wrapText="true" style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="Contact Support" style="-fx-background-color: #e67e22; -fx-text-fill: white;"/>
+                    </VBox>
+                    
+                    <!-- Card 6: Settings -->
+                    <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 2, 2);" 
+                          GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <Label text="Settings" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Label text="Customize your preferences and system options." wrapText="true" style="-fx-text-fill: #7f8c8d;"/>
+                        <Button text="Adjust Settings" style="-fx-background-color: #16a085; -fx-text-fill: white;"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- Right: Chat Panel (added) -->
+    <right>
+        <VBox fx:id="chatContainer" spacing="10" style="-fx-padding: 10; -fx-background-color: #ecf0f1;">
+            <TextArea fx:id="chatArea" prefWidth="200" prefHeight="300" editable="false"/>
+            <HBox spacing="5">
+                <TextField fx:id="chatInput" prefWidth="150"/>
+                <!-- The sendButton is defined here so the controller can use it -->
+                <Button fx:id="sendButton" text="Send" style="-fx-background-color: #2980b9; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </right>
+    
+    <!-- Bottom: Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #bdc3c7;">
+            <Label text="&#169; 2025 ETS Export Tracking System" style="-fx-text-fill: #2c3e50;"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

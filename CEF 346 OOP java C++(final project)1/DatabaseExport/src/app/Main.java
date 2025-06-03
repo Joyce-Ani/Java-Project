@@ -1,0 +1,24 @@
+package app;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        // Load the login.fxml from the views package
+        Parent root = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+
+        primaryStage.setTitle("Export Tracking System - Signup");
+        primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

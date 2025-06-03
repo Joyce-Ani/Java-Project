@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx" 
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controllers.UpdateOrderController"
+            style="-fx-background-color: #ecf0f1;">
+
+    <!-- TOP: Navigation Bar (reuse your existing nav bar design) -->
+    <top>
+        <HBox spacing="20" alignment="CENTER" 
+              style="-fx-background-color: #34495e; -fx-padding: 15 20;">
+            <!-- Left Section: ETS Logo & Profile Icon -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <ImageView fx:id="profileIcon" fitHeight="40" fitWidth="40" visible="false">
+                    <image>
+                        <Image url="@images/profile.png"/>
+                    </image>
+                </ImageView>
+                <Label text="ETS" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+            </HBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <!-- Navigation Buttons -->
+            <HBox spacing="10" alignment="CENTER">
+               
+                <Button text="Update Order" onAction="#handleUpdateOrder"      style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 12px 35px; -fx-background-radius: 5;"/>
+
+               
+            </HBox>
+            <!-- Right Section: Login Button -->
+            
+        </HBox>
+    </top>
+    
+    <!-- CENTER: Update Order Form -->
+    <center>
+        <VBox spacing="25" alignment="TOP_CENTER" style="-fx-padding: 20;">
+            <!-- Form Title -->
+            <Label text="Update Order" 
+                   style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+            
+            <!-- Optional: Order ID Field (for identifying which order to update) -->
+            <GridPane hgap="15" vgap="15">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="30"/>
+                    <ColumnConstraints percentWidth="70"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="25"/>
+                </rowConstraints>
+                <children>
+                    <Label text="Order ID:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;"/>
+                    <TextField fx:id="orderIdField" promptText="Enter Order ID" GridPane.columnIndex="1"/>
+                </children>
+            </GridPane>
+            
+            <!-- Accordion for Collapsible Sender and Receiver Sections -->
+            <Accordion fx:id="accordion" prefWidth="600">
+                <panes>
+                    <!-- Sender Information -->
+                    <TitledPane text="Sender Information" animated="true" expanded="true">
+                        <content>
+                            <GridPane hgap="15" vgap="15" style="-fx-padding: 20;">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="30"/>
+                                    <ColumnConstraints percentWidth="70"/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Full Name:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;"/>
+                                    <TextField fx:id="senderNameField" promptText="Enter full name" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Home Address:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="1"/>
+                                    <TextField fx:id="senderAddressField" promptText="Enter home address" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Phone:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="2"/>
+                                    <TextField fx:id="senderPhoneField" promptText="Enter phone number" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Email:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="3"/>
+                                    <TextField fx:id="senderEmailField" promptText="Enter email" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Country:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="4"/>
+                                    <TextField fx:id="senderCountryField" promptText="Enter country" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                </children>
+                            </GridPane>
+                        </content>
+                    </TitledPane>
+                    
+                    <!-- Receiver Information -->
+                    <TitledPane text="Receiver Information" animated="true" expanded="true">
+                        <content>
+                            <GridPane hgap="15" vgap="15" style="-fx-padding: 20;">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="30"/>
+                                    <ColumnConstraints percentWidth="70"/>
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                    <RowConstraints minHeight="25"/>
+                                </rowConstraints>
+                                <children>
+                                    <Label text="Full Name:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;"/>
+                                    <TextField fx:id="receiverNameField" promptText="Enter full name" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Full Address:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="1"/>
+                                    <TextField fx:id="receiverAddressField" promptText="Enter full address" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Phone:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="2"/>
+                                    <TextField fx:id="receiverPhoneField" promptText="Enter phone number" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Email:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="3"/>
+                                    <TextField fx:id="receiverEmailField" promptText="Enter email" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="Country:" style="-fx-font-size: 14px; -fx-text-fill: #34495e;" GridPane.rowIndex="4"/>
+                                    <TextField fx:id="receiverCountryField" promptText="Enter country" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                                </children>
+                            </GridPane>
+                        </content>
+                    </TitledPane>
+                </panes>
+            </Accordion>
+            
+            <!-- Order Details Section -->
+            <VBox spacing="15" alignment="CENTER" 
+                  style="-fx-padding: 20; -fx-background-color: #bdc3c7; -fx-background-radius: 10;">
+                <GridPane hgap="15" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="70"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="25"/>
+                        <RowConstraints minHeight="25"/>
+                    </rowConstraints>
+                    <children>
+                        <Label text="Weight (Kg):" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                        <TextField fx:id="weightField" promptText="Ex: 12.5" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Full Description:" style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;" GridPane.rowIndex="1"/>
+                        <TextField fx:id="fullDescriptionField" promptText="Enter full description" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
+            </VBox>
+            
+            <!-- Update Order Button -->
+            <Button text="Update Order" onAction="#handleUpdateOrder"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 12px 35px; -fx-background-radius: 5;"/>
+        </VBox>
+    </center>
+    
+    <!-- (Optional) Footer can be defined here -->
+    
+</BorderPane>
